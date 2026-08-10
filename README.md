@@ -1,45 +1,55 @@
-# RouteWise
+# RouteWise 
 
-**Delivery Route Optimizer using Graph Data Structure & Dijkstra's Shortest Path Algorithm**
-
-Programming Data Structures and Algorithms (PDSA) Coursework — HND Software Engineering, NIBM (Batch 25.2F)
+> **Multi-Criteria Delivery Route & Package Logistics Optimization Platform**  
+> Programming Data Structures and Algorithms (PDSA) Coursework — Higher National Diploma in Software Engineering (HNDSE), NIBM (Batch 25.2F)
 
 ---
 
 ## Project Overview
 
-RouteWise is a desktop application that helps find the most efficient delivery routes between multiple locations. It models locations and roads as a **Graph**, and uses **Dijkstra's Algorithm** to calculate the shortest path between points, helping reduce delivery time and cost.
+**RouteWise** is an enterprise-grade desktop software application designed to solve real-world urban logistics and package delivery routing challenges in Sri Lanka. The application models multi-modal delivery networks as a **Weighted Graph**, optimizes delivery paths using **Dijkstra's Algorithm** with custom **Min-Heap Priority Queues**, manages package inventories using an O(log n) **Binary Search Tree (BST)**, and tracks driver navigation history using **Doubly & Circular Linked Lists**.
 
-## Problem Statement
+---
 
-Manual route planning for deliveries is time-consuming and often inefficient, leading to wasted fuel, delays, and higher operational costs. RouteWise addresses this by automatically calculating the optimal route between delivery points using graph-based shortest path algorithms.
+## Key Features & Novel Features
 
-## Key Features
+- **Traffic-Aware Multi-Criteria Shortest Path Routing**: Calculates optimal delivery paths accounting for road distance (km), dynamic traffic congestion multipliers (1.0x Normal, 1.5x Moderate, 2.2x Heavy Congestion), turn-by-turn steps, and travel time estimates.
+- **Visual Canvas Map & Animated Delivery Truck**: Renders Sri Lanka logistics hubs (Colombo 01-15, Kandy, Galle, Negombo, Gampaha) with color-coded traffic road links and frame-by-frame animated vehicle simulation.
+- **O(log n) BST Package Inventory & QuickSort**: Instant package lookup by Tracking ID code using a custom Binary Search Tree, paired with QuickSort for urgency prioritization.
+- **Driver Navigation & Continuous Patrol Loops**: Step forward/backward through route stops using a Doubly Linked List with instant stop re-ordering, plus 24/7 continuous shift patrol loops powered by a Circular Linked List.
+- **Real-Time Big-O Performance Benchmarker**: Benchmarks custom Data Structures (`MinHeap`, `BST`, `DoublyLinkedList`) against Java Standard Collections in nanoseconds, paired with a complete theoretical Big-O complexity matrix.
+- **Modern Glassmorphism UI**: High-contrast, dynamic Dark Mode and Light Mode themes.
 
-- Add and manage delivery locations (nodes) and routes (edges)
-- Calculate shortest path between two or more points using Dijkstra's Algorithm
-- Sort delivery points by priority/distance
-- User-friendly graphical interface (JavaFX)
-- **Novel Features:**
-  - Multi-stop route optimization
-  - Real-time route cost comparison
-  - Priority-based delivery ordering
+---
+
+## Custom Data Structures Implemented
+
+| Data Structure | Implementation File | Primary Usage & Complexity |
+| --- | --- | --- |
+| **Weighted Graph (Adjacency List)** | `Graph.java` | Vertex/Edge road network modeling (O(V + E) space) |
+| **Custom Min-Heap (Priority Queue)** | `MinHeap.java` | Dijkstra node selection (O(log n) insert/poll) |
+| **Custom Binary Search Tree (BST)** | `BinarySearchTree.java` | Package tracking ID search (O(log n) average search) |
+| **Custom Doubly Linked List** | `DoublyLinkedList.java` | Route step navigation & stop re-ordering (O(1) prev/next) |
+| **Custom Circular Linked List** | `CircularLinkedList.java` | 24/7 continuous shift patrol loops (O(1) cycle append) |
+
+---
+
+## Group Member Module Allocation Matrix
+
+| Index Number | Member Name | Assigned Module & Role | Data Structure Focus |
+|---|---|---|---|
+| **GAHDSE252F-014** | **Tharushi Nethmini** | 
+| **GAHDSE252F-024** | **Ramesha Dasangi** | 
+| **GAHDSE252F-025** | **Himal Hansaka** |
+| **GAHDSE252F-031** | **Harindu Adeesha** | 
+
+---
 
 ## Tech Stack
 
 | Component | Technology |
 |---|---|
-| Language | Java |
-| GUI Framework | JavaFX |
-| Build Tool | Maven |
-| IDE | IntelliJ IDEA |
-| Version Control | Git & GitHub |
-
-## Group Members
-
-| Index Number | Name |
-|---|---|
-| GAHDSE252F-014 | Tharushi Nethmini |
-| GAHDSE252F-024 | Ramesha Dasangi |
-| GAHDSE252F-025 | Himal Hansaka |
-| GAHDSE252F-031 | Harindu Adeesha |
+| **Programming Language** | Java 17 / OpenJDK 21+ |
+| **GUI Framework** | JavaFX 21 (FXML & Canvas) |
+| **Build Tool** | Apache Maven |
+| **IDE** | IntelliJ IDEA |
