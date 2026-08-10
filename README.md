@@ -22,22 +22,10 @@
 
 ---
 
-## Custom Data Structures Implemented
-
-| Data Structure | Implementation File | Primary Usage & Complexity |
-| --- | --- | --- |
-| **Weighted Graph (Adjacency List)** | `Graph.java` | Vertex/Edge road network modeling (O(V + E) space) |
-| **Custom Min-Heap (Priority Queue)** | `MinHeap.java` | Dijkstra node selection (O(log n) insert/poll) |
-| **Custom Binary Search Tree (BST)** | `BinarySearchTree.java` | Package tracking ID search (O(log n) average search) |
-| **Custom Doubly Linked List** | `DoublyLinkedList.java` | Route step navigation & stop re-ordering (O(1) prev/next) |
-| **Custom Circular Linked List** | `CircularLinkedList.java` | 24/7 continuous shift patrol loops (O(1) cycle append) |
-
----
-
 ## Group Member Module Allocation Matrix
 
-| Index Number | Member Name | Assigned Module & Role | Data Structure Focus |
-|---|---|---|---|
+| Index Number | Member Name |
+|---|---|
 | **GAHDSE252F-014** | **Tharushi Nethmini** | 
 | **GAHDSE252F-024** | **Ramesha Dasangi** | 
 | **GAHDSE252F-025** | **Himal Hansaka** |
