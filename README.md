@@ -22,7 +22,7 @@
 
 ---
 
-## Group Member Module Allocation Matrix
+## Group Members
 
 | Index Number | Member Name |
 |---|---|
