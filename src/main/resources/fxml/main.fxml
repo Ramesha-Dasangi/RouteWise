@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootBorderPane" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nibm.routewise.ui.MainController"
+            prefWidth="1100" prefHeight="720">
+
+    <!-- Top Header Bar -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="14" right="24" bottom="14" left="24"/>
+            </padding>
+            <VBox spacing="2">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="🚚 RouteWise " styleClass="app-title"/>
+                </HBox>
+                <Label text="Multi-Criteria Delivery Route &amp; Package Logistics Optimization Platform" styleClass="app-subtitle"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="themeToggleButton" text="🌙 Dark Mode" onAction="#onToggleTheme" styleClass="btn-theme"/>
+        </HBox>
+    </top>
+
+    <!-- Main Navigation TabPane -->
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" fx:id="mainTabPane">
+            
+            <!-- TAB 1: ROUTE FINDER & SIMULATOR (MEMBER 1) -->
+            <Tab text="📍 Route Finder &amp; Simulator">
+                <HBox spacing="16">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <!-- Control Panel (Left) -->
+                    <VBox styleClass="card-panel" spacing="14" prefWidth="320">
+                        <Label text="Location &amp; Traffic Routing" styleClass="section-title"/>
+                        
+                        <VBox spacing="4">
+                            <Label text="Origin Node (Warehouse / Hub)" styleClass="field-label"/>
+                            <ComboBox fx:id="startComboBox" maxWidth="Infinity" promptText="Select Start Location"/>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <Label text="Destination Node" styleClass="field-label"/>
+                            <ComboBox fx:id="endComboBox" maxWidth="Infinity" promptText="Select Destination"/>
+                        </VBox>
+
+                        <VBox spacing="4">
+                            <Label text="Dynamic Traffic Condition" styleClass="field-label"/>
+                            <ComboBox fx:id="trafficComboBox" maxWidth="Infinity"/>
+                        </VBox>
+
+                        <Button fx:id="findRouteButton" text="🚀 Calculate Shortest Path" onAction="#onFindRoute"
+                                styleClass="btn-primary" maxWidth="Infinity"/>
+
+                        <Separator/>
+
+                        <Label text="Route Metrics" styleClass="section-title"/>
+
+                        <HBox spacing="10">
+                            <VBox styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                <Label text="Total Distance" styleClass="stat-label"/>
+                                <Label fx:id="distanceLabel" text="0.0 km" styleClass="stat-value"/>
+                            </VBox>
+                            <VBox styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                <Label text="Est. Time" styleClass="stat-label"/>
+                                <Label fx:id="timeLabel" text="0 mins" styleClass="stat-value"/>
+                            </VBox>
+                        </HBox>
+
+                        <VBox spacing="4">
+                            <Label text="Turn-by-Turn Navigation Steps" styleClass="field-label"/>
+                            <ListView fx:id="navigationStepsListView" prefHeight="160"/>
+                        </VBox>
+
+                        <Label fx:id="statusLabel" text="System ready." styleClass="stat-label" wrapText="true"/>
+                    </VBox>
+
+                    <!-- Interactive Map Canvas (Center) -->
+                    <VBox styleClass="card-panel" spacing="10" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Sri Lanka Delivery Route Map Network" styleClass="section-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="Legend: 🟢 Normal  🟡 Moderate  🔴 Heavy Traffic" styleClass="stat-label"/>
+                        </HBox>
+
+                        <StackPane styleClass="map-canvas-frame" VBox.vgrow="ALWAYS">
+                            <Canvas fx:id="mapCanvas" width="680" height="500"/>
+                        </StackPane>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- TAB 2: PACKAGE LOGISTICS & BST SEARCH (MEMBER 2) -->
+            <Tab text="📦 Package Logistics &amp; BST Search">
+                <VBox spacing="16">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <!-- Search & Quick Actions -->
+                    <HBox styleClass="card-panel" spacing="12" alignment="CENTER_LEFT">
+                        <Label text="🔍 Search Package by Tracking ID (BST):" styleClass="field-label"/>
+                        <TextField fx:id="searchTrackingField" promptText="Enter Tracking ID (e.g. TRK-1002)" prefWidth="240"/>
+                        <Button text="Search O(log n)" onAction="#onSearchPackage" styleClass="btn-primary"/>
+                        <Button text="Sort by Urgency (QuickSort)" onAction="#onSortPackagesByUrgency" styleClass="btn-secondary"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="bstStatsLabel" text="BST Node Count: 0 | Height: 0" styleClass="stat-label"/>
+                    </HBox>
+
+                    <HBox spacing="16" VBox.vgrow="ALWAYS">
+                        <!-- Add Package Form -->
+                        <VBox styleClass="card-panel" spacing="12" prefWidth="300">
+                            <Label text="Add New Package Order" styleClass="section-title"/>
+                            
+                            <VBox spacing="4">
+                                <Label text="Tracking ID Code" styleClass="field-label"/>
+                                <TextField fx:id="newTrackingField" promptText="TRK-1006"/>
+                            </VBox>
+
+                            <VBox spacing="4">
+                                <Label text="Recipient Name" styleClass="field-label"/>
+                                <TextField fx:id="newRecipientField" promptText="Saman Perera"/>
+                            </VBox>
+
+                            <VBox spacing="4">
+                                <Label text="Destination Location" styleClass="field-label"/>
+                                <ComboBox fx:id="newDestinationComboBox" maxWidth="Infinity"/>
+                            </VBox>
+
+                            <VBox spacing="4">
+                                <Label text="Urgency Score (1 = Low, 10 = Medical)" styleClass="field-label"/>
+                                <Slider fx:id="urgencySlider" min="1" max="10" value="5" showTickLabels="true" showTickMarks="true" majorTickUnit="1"/>
+                            </VBox>
+
+                            <VBox spacing="4">
+                                <Label text="Package Weight (kg)" styleClass="field-label"/>
+                                <TextField fx:id="newWeightField" promptText="2.5"/>
+                            </VBox>
+
+                            <VBox spacing="4">
+                                <Label text="Delivery Status" styleClass="field-label"/>
+                                <ComboBox fx:id="newStatusComboBox" maxWidth="Infinity"/>
+                            </VBox>
+
+                            <Button text="➕ Insert into BST" onAction="#onAddPackage" styleClass="btn-success" maxWidth="Infinity"/>
+                        </VBox>
+
+                        <!-- Package Inventory Table -->
+                        <VBox styleClass="card-panel" spacing="10" HBox.hgrow="ALWAYS">
+                            <Label text="Package Inventory (BST In-Order Traversal)" styleClass="section-title"/>
+                            <TableView fx:id="packageTableView" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colTracking" text="Tracking ID" prefWidth="130"/>
+                                    <TableColumn fx:id="colRecipient" text="Recipient" prefWidth="160"/>
+                                    <TableColumn fx:id="colDestination" text="Destination" prefWidth="140"/>
+                                    <TableColumn fx:id="colUrgency" text="Urgency (1-10)" prefWidth="110"/>
+                                    <TableColumn fx:id="colWeight" text="Weight (kg)" prefWidth="100"/>
+                                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
+                                </columns>
+                            </TableView>
+
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Update Selected Package Status:" styleClass="field-label"/>
+                                <ComboBox fx:id="updateStatusComboBox" prefWidth="160"/>
+                                <Button text="✏️ Update Status" onAction="#onUpdatePackageStatus" styleClass="btn-primary"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- TAB 3: ROUTE STEPS & PATROL LOOPS (MEMBER 3) -->
+            <Tab text="🔄 Route Navigation (Doubly/Circular List)">
+                <HBox spacing="16">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <!-- Doubly Linked List Step-by-Step Navigator -->
+                    <VBox styleClass="card-panel" spacing="14" prefWidth="520" HBox.hgrow="ALWAYS">
+                        <Label text="Driver Navigation &amp; Stop Re-ordering (Doubly Linked List)" styleClass="section-title"/>
+
+                        <HBox spacing="10" alignment="CENTER">
+                            <Button text="◀ Step Back (prev)" onAction="#onStepBackward" styleClass="btn-secondary"/>
+                            <VBox alignment="CENTER" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                <Label text="Current Active Stop" styleClass="stat-label"/>
+                                <Label fx:id="currentStopLabel" text="No active route" styleClass="stat-value"/>
+                            </VBox>
+                            <Button text="Step Forward (next) ▶" onAction="#onStepForward" styleClass="btn-primary"/>
+                        </HBox>
+
+                        <Label text="Active Route Stop Sequence" styleClass="field-label"/>
+                        <ListView fx:id="routeStopListView" VBox.vgrow="ALWAYS"/>
+
+                        <HBox spacing="10">
+                            <Button text="⬆ Swap Up" onAction="#onSwapStopUp" styleClass="btn-secondary" HBox.hgrow="ALWAYS"/>
+                            <Button text="⬇ Swap Down" onAction="#onSwapStopDown" styleClass="btn-secondary" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Circular Linked List Patrol Loop Section -->
+                    <VBox styleClass="card-panel" spacing="14" prefWidth="480">
+                        <Label text="Continuous Shift Patrol Loop (Circular Linked List)" styleClass="section-title"/>
+                        <Label text="Demonstrates cyclic linked list operations for 24/7 continuous delivery shifts." styleClass="stat-label" wrapText="true"/>
+
+                        <Button text="🔄 Generate 3-Cycle Continuous Patrol Route" onAction="#onGeneratePatrolLoop" styleClass="btn-primary" maxWidth="Infinity"/>
+
+                        <Label text="Continuous Shift Sequence Output:" styleClass="field-label"/>
+                        <TextArea fx:id="patrolLoopTextArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- TAB 4: ALGORITHM & BIG-O BENCHMARKS (MEMBER 4) -->
+            <Tab text="📊 Algorithm &amp; Big-O Benchmarks">
+                <VBox spacing="16">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+
+                    <!-- Benchmark Action Bar -->
+                    <HBox styleClass="card-panel" spacing="14" alignment="CENTER_LEFT">
+                        <VBox spacing="2">
+                            <Label text="Real-Time Algorithm Complexity &amp; Performance Workbench" styleClass="section-title"/>
+                            <Label text="Compare Custom Data Structure execution times against Java standard Collections" styleClass="stat-label"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="▶ Execute Real-Time Benchmarks" onAction="#onRunBenchmarks" styleClass="btn-primary"/>
+                    </HBox>
+
+                    <!-- Benchmark Cards -->
+                    <HBox spacing="16">
+                        <VBox styleClass="card-panel" spacing="10" HBox.hgrow="ALWAYS">
+                            <Label text="Member 1: Custom MinHeap vs Java PQ" styleClass="section-title"/>
+                            <Label fx:id="heapCustomTimeLabel" text="Custom MinHeap: — ns" styleClass="stat-value"/>
+                            <Label fx:id="heapJavaTimeLabel" text="Java PriorityQueue: — ns" styleClass="stat-label"/>
+                            <Separator/>
+                            <Label text="Complexity: O(log n) Insert / Poll" styleClass="field-label"/>
+                        </VBox>
+
+                        <VBox styleClass="card-panel" spacing="10" HBox.hgrow="ALWAYS">
+                            <Label text="Member 2: Custom BST vs Java TreeSet" styleClass="section-title"/>
+                            <Label fx:id="bstCustomTimeLabel" text="Custom BST: — ns" styleClass="stat-value"/>
+                            <Label fx:id="bstJavaTimeLabel" text="Java TreeSet: — ns" styleClass="stat-label"/>
+                            <Separator/>
+                            <Label text="Complexity: O(log n) Search / Insert" styleClass="field-label"/>
+                        </VBox>
+
+                        <VBox styleClass="card-panel" spacing="10" HBox.hgrow="ALWAYS">
+                            <Label text="Member 3: Custom DLL vs Java LinkedList" styleClass="section-title"/>
+                            <Label fx:id="dllCustomTimeLabel" text="Custom DLL: — ns" styleClass="stat-value"/>
+                            <Label fx:id="dllJavaTimeLabel" text="Java LinkedList: — ns" styleClass="stat-label"/>
+                            <Separator/>
+                            <Label text="Complexity: O(1) Prev/Next Traversal" styleClass="field-label"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Theoretical Complexity Table -->
+                    <VBox styleClass="card-panel" spacing="10" VBox.vgrow="ALWAYS">
+                        <Label text="Theoretical Big-O Complexity Reference Table (Viva Preparation)" styleClass="section-title"/>
+                        <TableView fx:id="complexityTableView" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colDsName" text="Data Structure" prefWidth="220"/>
+                                <TableColumn fx:id="colAccess" text="Access (Best/Worst)" prefWidth="180"/>
+                                <TableColumn fx:id="colSearch" text="Search (Best/Worst)" prefWidth="180"/>
+                                <TableColumn fx:id="colInsert" text="Insertion (Best/Worst)" prefWidth="180"/>
+                                <TableColumn fx:id="colDelete" text="Deletion (Best/Worst)" prefWidth="180"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+            </Tab>
+
+
+        </TabPane>
+    </center>
+
+</BorderPane>
