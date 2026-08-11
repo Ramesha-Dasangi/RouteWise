@@ -32,7 +32,6 @@ Manual route planning for deliveries is time-consuming and often inefficient, le
 | Language | Java |
 | GUI Framework | JavaFX |
 | Build Tool | Maven |
-| Testing | JUnit 5 |
 | IDE | IntelliJ IDEA |
 | Version Control | Git & GitHub |
 
