@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    { "id": "A", "name": "Warehouse" },
+    { "id": "B", "name": "Colombo" },
+    { "id": "C", "name": "Kandy" },
+    { "id": "D", "name": "Galle" },
+    { "id": "E", "name": "Negombo" }
+  ],
+  "edges": [
+    { "source": "A", "destination": "B", "weight": 10 },
+    { "source": "A", "destination": "E", "weight": 6 },
+    { "source": "B", "destination": "C", "weight": 12 },
+    { "source": "B", "destination": "D", "weight": 20 },
+    { "source": "E", "destination": "C", "weight": 15 },
+    { "source": "C", "destination": "D", "weight": 8 }
+  ]
+}

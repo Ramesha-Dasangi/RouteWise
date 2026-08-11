@@ -1,0 +1,326 @@
+/* Modern Glassmorphic Dark & Light Design System for RouteWise JavaFX */
+
+.root {
+    -fx-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    -fx-base: #0f172a;
+    -fx-background-color: #0f172a;
+}
+
+/* Light Theme Overrides */
+.light-theme {
+    -fx-base: #f8fafc;
+    -fx-background-color: #f8fafc;
+}
+
+/* Top Header Bar */
+.header-bar {
+    -fx-background-color: linear-gradient(to right, #0f172a, #1e1b4b, #312e81);
+    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.light-theme .header-bar {
+    -fx-background-color: linear-gradient(to right, #4338ca, #3b82f6);
+}
+
+.app-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+    -fx-fill: #ffffff;
+    -fx-text-fill: #ffffff;
+}
+
+.app-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a5b4fc;
+}
+
+.light-theme .app-subtitle {
+    -fx-text-fill: #e0e7ff;
+}
+
+.header-badge {
+    -fx-background-color: rgba(99, 102, 241, 0.25);
+    -fx-text-fill: #818cf8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10;
+    -fx-background-radius: 20;
+    -fx-border-color: #6366f1;
+    -fx-border-radius: 20;
+}
+
+.light-theme .header-badge {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: #ffffff;
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Modern Tab Pane */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #1e293b;
+}
+
+.light-theme .tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #cbd5e1;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-padding: 10 18;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.light-theme .tab-pane .tab-label {
+    -fx-text-fill: #334155;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #334155;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.light-theme .tab-pane .tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #818cf8;
+}
+
+.light-theme .tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #1e1b4b;
+}
+
+/* Cards & Content Panels */
+.card-panel {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 14;
+    -fx-border-color: #334155;
+    -fx-border-radius: 14;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 12, 0, 0, 4);
+}
+
+.light-theme .card-panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.08), 12, 0, 0, 4);
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #f8fafc;
+}
+
+.light-theme .section-title {
+    -fx-text-fill: #0f172a;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #94a3b8;
+}
+
+.light-theme .field-label {
+    -fx-text-fill: #334155;
+}
+
+/* Stat Box */
+.stat-box {
+    -fx-background-color: #0f172a;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-border-color: #334155;
+    -fx-border-radius: 10;
+}
+
+.light-theme .stat-box {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #cbd5e1;
+}
+
+.stat-value {
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #38bdf8;
+}
+
+.light-theme .stat-value {
+    -fx-text-fill: #0284c7;
+}
+
+.stat-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+.light-theme .stat-label {
+    -fx-text-fill: #475569;
+}
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #6366f1, #4f46e5);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 700;
+    -fx-font-size: 13px;
+    -fx-background-radius: 8;
+    -fx-padding: 10 16;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #4f46e5, #4338ca);
+}
+
+.btn-secondary {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f8fafc;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.light-theme .btn-secondary {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #0f172a;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #475569;
+}
+
+.btn-success {
+    -fx-background-color: #10b981;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 700;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-success:hover {
+    -fx-background-color: #059669;
+}
+
+.btn-theme {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+}
+
+/* Controls - Inputs & Combos */
+.combo-box, .text-field, .text-area {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: #f8fafc;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+    -fx-padding: 6 10;
+}
+
+.light-theme .combo-box, .light-theme .text-field, .light-theme .text-area {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #94a3b8;
+}
+
+.light-theme .text-area .content {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .cell, .combo-box .list-cell {
+    -fx-text-fill: #f8fafc;
+}
+
+.light-theme .combo-box .cell, .light-theme .combo-box .list-cell {
+    -fx-text-fill: #0f172a;
+}
+
+/* Lists and Tables */
+.list-view, .table-view {
+    -fx-background-color: #0f172a;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+}
+
+.light-theme .list-view, .light-theme .table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f8fafc;
+    -fx-padding: 8 10;
+}
+
+.light-theme .list-cell {
+    -fx-text-fill: #0f172a;
+}
+
+.list-cell:selected {
+    -fx-background-color: #334155;
+    -fx-text-fill: #38bdf8;
+}
+
+.light-theme .list-cell:selected {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #0284c7;
+}
+
+/* TableView Headers and Cells in Light Mode */
+.light-theme .table-view .column-header {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #cbd5e1;
+}
+
+.light-theme .table-view .column-header .label {
+    -fx-text-fill: #0f172a;
+    -fx-font-weight: bold;
+}
+
+.light-theme .table-cell {
+    -fx-text-fill: #0f172a;
+}
+
+.light-theme .table-row-cell {
+    -fx-background-color: #ffffff;
+}
+
+.light-theme .table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.light-theme .table-row-cell:selected {
+    -fx-background-color: #e0e7ff;
+    -fx-text-fill: #3730a3;
+}
+
+/* Map Frame */
+.map-canvas-frame {
+    -fx-background-color: #0f172a;
+    -fx-background-radius: 12;
+    -fx-border-color: #334155;
+    -fx-border-radius: 12;
+}
+
+.light-theme .map-canvas-frame {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #cbd5e1;
+}
